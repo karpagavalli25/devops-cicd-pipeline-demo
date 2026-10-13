@@ -55,7 +55,7 @@ pipeline {
                     groupId: 'classroom',
                     version: '1.0-SNAPSHOT',
                     repository: 'kalai',
-                    credentialsId: 'NEXUS_CREDENTIAL_ID',
+                    credentialsId: '70fcb998-9865-4f49-8796-433463e2917b',
 
                     artifacts: [
                         [
