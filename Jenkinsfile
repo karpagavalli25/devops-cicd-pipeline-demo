@@ -51,7 +51,7 @@ pipeline {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: '54.160.156.132::8081',
+                    nexusUrl: '54.160.156.132',
                     groupId: 'classroom',
                     version: '1.0-SNAPSHOT',
                     repository: 'kalai',
