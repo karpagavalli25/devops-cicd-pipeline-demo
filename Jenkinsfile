@@ -98,5 +98,15 @@ stage('Docker Push') {
         }
     }
 }
+
+stage('Deploy to Kubernetes') {
+    steps {
+        sh '''
+        kubectl apply -f kubernetes/
+        kubectl rollout status deployment/demo-app
+        kubectl get pods
+        '''
+    }
+}
     }
 }

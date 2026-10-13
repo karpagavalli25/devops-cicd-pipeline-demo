@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: demo-app:v1
+        image: karpagavallia/demo-app:v1
         ports:
         - containerPort: 8080
