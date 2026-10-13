@@ -24,7 +24,7 @@ pipeline {
                     ]) {
 
                         sh '''
-                        sonar-scanner \
+                        /home/jenkinsadm/sonar-scanner-8.0.1.6346-linux-x64/bin/sonar-scanner \
                         -Dsonar.projectKey=wetech \
                         -Dsonar.projectName=wetech \
                         -Dsonar.sources=samplejar/src \
@@ -78,5 +78,25 @@ pipeline {
             }
         }
 
+
+stage('Docker Push') {
+    steps {
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'dockerhub-creds',
+                usernameVariable: 'DOCKER_USER',
+                passwordVariable: 'DOCKER_PASS'
+            )
+        ]) {
+            sh '''
+                echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+
+                docker tag demo-app:v1 $DOCKER_USER/demo-app:v1
+
+                docker push $DOCKER_USER/demo-app:v1
+            '''
+        }
+    }
+}
     }
 }
